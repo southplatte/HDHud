@@ -36,6 +36,11 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 
 public class HarleyDroidSettings extends PreferenceActivity implements OnSharedPreferenceChangeListener {
+	
+	//Add to provide fragment check on Android KitKat 4.4 and greater devices so preferences is not broken
+	protected boolean isValidFragment(String fragmentName) {
+		return "org.harleydroid.HarleyDroidSettings$Fragment".equals(fragmentName);
+	}
 
 	@SuppressWarnings("deprecation")
 	@Override
@@ -133,6 +138,7 @@ public class HarleyDroidSettings extends PreferenceActivity implements OnSharedP
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public static class Fragment extends PreferenceFragment implements OnSharedPreferenceChangeListener {
+
 		 @Override
 		 public void onCreate(Bundle savedInstanceState) {
 			 super.onCreate(savedInstanceState);
